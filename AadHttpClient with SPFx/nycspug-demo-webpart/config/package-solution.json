@@ -1,0 +1,19 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "nycspug-demo-webpart-client-side-solution",
+    "id": "3f1c7c12-4039-433a-8089-d8e6f7a57876",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "isDomainIsolated": false,
+    "webApiPermissionRequests": [
+      {
+        "resource": "NYSPUGDemoAPI1",
+        "scope": "user_impersonation"
+        }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/nycspug-demo-webpart.sppkg"
+  }
+}

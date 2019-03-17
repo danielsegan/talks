@@ -1,0 +1,45 @@
+
+# VS CODE
+
+mkdir AWDemo
+cd AWDemo
+dotnet new console
+
+dotnet add package Microsoft.EntityFrameworkCore.SqlServer
+dotnet add package Microsoft.EntityFrameworkCore.Tools
+dotnet add package Microsoft.EntityFrameworkCore.SqlServer.Design
+
+Open VS
+
+dotnet ef dbcontext scaffold "Server=(localdb)\mssqllocaldb;Database=AdventureWorks;Trusted_Connection=True;" Microsoft.EntityFrameworkCore.SqlServer -o Model -c "AdventureContext"
+
+
+Create AWContext Class
+
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace AWDemo
+{
+    public class AWContext : DbContext
+    {
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            // Enable Logging
+            var lf = new LoggerFactory();
+            lf.AddProvider(new MyLoggerProvider());
+            optionsBuilder.UseLoggerFactory(lf);
+
+            // Turn this on to see the values of the query
+            optionsBuilder.EnableSensitiveDataLogging(true);
+
+            optionsBuilder.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=AdventureWorks;Trusted_Connection=True;");
+        }
+    }
+}
+
+
+Related Objects

@@ -1,0 +1,20 @@
+# VS CODE
+
+mkdir EFCoreApp
+cd EFCoreApp
+dotnet new console
+
+dotnet add package Microsoft.EntityFrameworkCore.SqlServer
+dotnet add package Microsoft.EntityFrameworkCore.Tools
+dotnet add package Microsoft.EntityFrameworkCore.SqlServer.Design
+
+dotnet restore
+
+dotnet ef -h
+
+# Look at Error re. tools.
+
+dotnet add package Microsoft.EntityFrameworkCore.Tools  
+
+#VS 
+Use GUI 
